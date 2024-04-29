@@ -878,6 +878,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      <height>121</height>
     </rect>
    </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>125</number>
+   </attribute>
    <column>
     <property name="text">
      <string>nom</string>
@@ -893,6 +896,19 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
      <string>tel</string>
     </property>
    </column>
+  </widget>
+  <widget class="QPushButton" name="afficher_t">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>570</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Afficher tout</string>
+   </property>
   </widget>
  </widget>
  <resources/>
