@@ -830,7 +830,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QPushButton" name="vider">
+  <widget class="QPushButton" name="vider_file">
    <property name="geometry">
     <rect>
      <x>110</x>

@@ -74,11 +74,11 @@ def supprim():
             file.writerow(ligne)
         f.close()
 
-        QMessageBox.information(None, "Notice", "Suppression avec succès")
+        QMessageBox.information(fen, "Notice", "Suppression avec succès")
 
 def error(found):
     if not found:
-        QMessageBox.critical(None, "Error", "NOM INEXISTANT")
+        QMessageBox.critical(fen, "Error", "NOM INEXISTANT")
 
 
 def modification():
@@ -106,20 +106,29 @@ def modification():
         for data in d:
             file.writerow(data)
             
-    QMessageBox.information(None,"Notice","Modification effectuée avec succes")
+    QMessageBox.information(fen,"coool","Modification effectuée avec succes")
     
 
 def aff():
     name=fen.num_aff.text()
     fen.table.setRowCount(0)
+    test=True
     for contact in open('projetpython.csv','r'):
         [nom,email,tel] = contact.split(',')
         if(name==nom):
+            test=False
             row = fen.table.rowCount()
             fen.table.insertRow(row)
             fen.table.setItem(row,0,QTableWidgetItem(nom))
             fen.table.setItem(row,1,QTableWidgetItem(email))
             fen.table.setItem(row,2,QTableWidgetItem(tel.strip()))
+        if(name==""):
+            QMessageBox.information(fen,"error","nom obligatoire")
+            
+        else:
+            QMessageBox.information(fen,"error","nom non existant")
+            
+            
             
     fen.num_aff.setText("")
     
@@ -134,6 +143,12 @@ def afftout():
             fen.table.setItem(row,0,QTableWidgetItem(nom))
             fen.table.setItem(row,1,QTableWidgetItem(email))
             fen.table.setItem(row,2,QTableWidgetItem(tel.strip()))
+def vider():
+    with open("projetpython.csv",'w') as file:
+        writer=csv.writer(file)
+    fen.table.setRowCount(0)
+        
+    
         
 
 app = QApplication([])
@@ -144,4 +159,5 @@ fen.supprimer.clicked.connect(supprim)
 fen.afficher.clicked.connect(aff)
 fen.modifier.clicked.connect(modification)
 fen.afficher_t.clicked.connect(afftout)
+fen.vider_file.clicked.connect(vider)
 app.exec_()
