@@ -13,12 +13,33 @@ def is_valid_email(email):
                 return True
     return False
 
+def distinct(cin):
+    try:
+        for i in open("projetpython.csv","r"):
+            [cin_test,nom,email,tel] = i.split(',')
+        
+            if cin_test == cin:
+                return False
+    
+        return True
+    except:
+        return True
+
+
 def ajout():
+    cin = fen.cin.text()
     name = fen.name.text()
     mail = fen.mail.text()
     tel = fen.tel.text()
-    
-    if (not name.isalpha()) or (name==""):
+    if not distinct(cin) or not cin.isnumeric():
+        QMessageBox.critical(fen, "Error", "CIN non DISTINCT ou incorrect")
+        fen.cin.setText("")
+        fen.cin.setFocus()
+    elif not cin.isnumeric() or cin == "":
+        QMessageBox.critical(fen, "Error", "Vérifiez votre cin")
+        fen.name.setText("")
+        fen.name.setFocus()
+    elif (not name.isalpha()) or (name==""):
         QMessageBox.critical(fen, "Error", "Vérifiez votre nom")
         fen.name.setText("")
         fen.name.setFocus()
@@ -31,24 +52,25 @@ def ajout():
         fen.tel.setText("")
         fen.tel.setFocus()
     else:
-        user = [name, mail, tel]
+        user = [cin,name, mail, tel]
         file_exists = os.path.isfile("projetpython.csv")
         with open("projetpython.csv", "a", newline='') as file:
             writer = csv.writer(file)
             if not file_exists:
-                fields = ["nom", "mail", "tel"]
+                fields = ["cin","nom", "mail", "tel"]
                 writer.writerow(fields)
                 
             writer.writerow(user)
-        QMessageBox.information(fen, "Cool", "Ajout effectuer avec succes")
+        QMessageBox.information(fen, "Notice", "Ajout effectuer avec succes")
         fen.name.setText("")
         fen.mail.setText("")
         fen.tel.setText("")
-        fen.name.setFocus()
+        fen.cin.setText("")
+        fen.cin.setFocus()
 
 def supprim():
-    name = fen.num_supprim.text()
-    if not name.isalpha() or name == "":
+    cin = fen.num_supprim.text()
+    if not cin.isnumeric() or cin == "":
         QMessageBox.critical(fen, "Error", "Vérifiez votre nom")
         fen.num_supprim.setText("")
         fen.num_supprim.setFocus()
@@ -58,7 +80,7 @@ def supprim():
         f = open("projetpython.csv", "r", newline='')
         file = csv.reader(f)
         for ligne in file:
-            if name != ligne[0]:
+            if cin != ligne[0]:
                 liste.append(ligne)
             else:
                 test = True
@@ -78,11 +100,11 @@ def supprim():
 
 def error(found):
     if not found:
-        QMessageBox.critical(fen, "Error", "NOM INEXISTANT")
+        QMessageBox.critical(fen, "Error", "CIN INEXISTANT")
 
 
 def modification():
-    nom = fen.num_modif.text()
+    cin = fen.num_modif.text()
     new_mail = fen.nouv_mail.text()
     new_tel = fen.nouv_num.text()
     
@@ -91,9 +113,9 @@ def modification():
     with open("projetpython.csv","r") as f:
         file = csv.reader(f)
         for data in file:
-            if data[0] == nom:
-                data[1] = new_mail
-                data[2] = new_tel
+            if data[0] == cin:
+                data[2] = new_mail
+                data[3] = new_tel
                 found = True
             d.append(data)
     
@@ -114,14 +136,15 @@ def aff():
     fen.table.setRowCount(0)
     test=True
     for contact in open('projetpython.csv','r'):
-        [nom,email,tel] = contact.split(',')
+        [cin,nom,email,tel] = contact.split(',')
         if(name==nom):
             test=False
             row = fen.table.rowCount()
             fen.table.insertRow(row)
-            fen.table.setItem(row,0,QTableWidgetItem(nom))
-            fen.table.setItem(row,1,QTableWidgetItem(email))
-            fen.table.setItem(row,2,QTableWidgetItem(tel.strip()))
+            fen.table.setItem(row,0,QTableWidgetItem(cin))
+            fen.table.setItem(row,1,QTableWidgetItem(nom))
+            fen.table.setItem(row,2,QTableWidgetItem(email))
+            fen.table.setItem(row,3,QTableWidgetItem(tel.strip()))
         if(name==""):
             QMessageBox.information(fen,"error","nom obligatoire")
             
@@ -136,14 +159,18 @@ def aff():
 def afftout():
     fen.table.setRowCount(0)
     for contact in open("projetpython.csv","r"):
-        [nom,email,tel] = contact.split(',')
+        [cin,nom,email,tel] = contact.split(',')
         row = fen.table.rowCount()
-        if nom != "nom" and email != "mail" and tel != "tel":
+        if cin != "cin" and nom != "nom" and email != "mail" and tel != "tel":
             fen.table.insertRow(row)
-            fen.table.setItem(row,0,QTableWidgetItem(nom))
-            fen.table.setItem(row,1,QTableWidgetItem(email))
-            fen.table.setItem(row,2,QTableWidgetItem(tel.strip()))
+            fen.table.setItem(row,0,QTableWidgetItem(cin))
+            fen.table.setItem(row,1,QTableWidgetItem(nom))
+            fen.table.setItem(row,2,QTableWidgetItem(email))
+            fen.table.setItem(row,3,QTableWidgetItem(tel.strip()))
 def vider():
+    if fen.password.text() != "0000":
+        QMessageBox.critical(fen,"error","Mot de passe incorrect")
+        return
     with open("projetpython.csv",'w') as file:
         writer=csv.writer(file)
     fen.table.setRowCount(0)

@@ -503,7 +503,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>330</x>
      <y>50</y>
      <width>55</width>
      <height>16</height>
@@ -516,7 +516,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>520</x>
      <y>50</y>
      <width>55</width>
      <height>16</height>
@@ -529,7 +529,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>730</x>
      <y>50</y>
      <width>55</width>
      <height>16</height>
@@ -542,7 +542,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QLineEdit" name="name">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>300</x>
      <y>80</y>
      <width>137</width>
      <height>22</height>
@@ -552,7 +552,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QLineEdit" name="mail">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>470</x>
      <y>80</y>
      <width>171</width>
      <height>22</height>
@@ -562,7 +562,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QLineEdit" name="tel">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>680</x>
      <y>80</y>
      <width>161</width>
      <height>22</height>
@@ -572,7 +572,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QPushButton" name="ajouter">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>730</x>
      <y>130</y>
      <width>93</width>
      <height>28</height>
@@ -585,7 +585,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>70</x>
      <y>160</y>
      <width>761</width>
      <height>16</height>
@@ -608,7 +608,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     </rect>
    </property>
    <property name="text">
-    <string>Nom du contact a modifier</string>
+    <string>CIN du contact a modifier</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -872,9 +872,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
   <widget class="QTableWidget" name="table">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>140</x>
      <y>520</y>
-     <width>401</width>
+     <width>511</width>
      <height>121</height>
     </rect>
    </property>
@@ -883,17 +883,22 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
    </attribute>
    <column>
     <property name="text">
-     <string>nom</string>
+     <string>Cin</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>mail</string>
+     <string>Nom</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>tel</string>
+     <string>E-mail</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tel</string>
     </property>
    </column>
   </widget>
@@ -908,6 +913,55 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
    </property>
    <property name="text">
     <string>Afficher tout</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>50</y>
+     <width>55</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CIN</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="cin">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>80</y>
+     <width>137</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="password">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>610</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #606060;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>590</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Mot de passe</string>
    </property>
   </widget>
  </widget>
